@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="greetingSection" style="text-align: center;">
+  <h2>👋 Welcome!</h2>
+  <label for="username">What's your name?</label><br><br>
+  <input type="text" id="username" placeholder="Enter your name">
+  <br><br>
+  <button onclick="startForm()">Let's Get Started</button>
+</div>
+
+<form id="predictForm" method="POST" action="/predict" style="display:none;">
+  <div id="questionContainer">
+    <div class="question" style="display: none;">
+      <label>Gender:</label>
+      <select name="gender" required>
+        <option value="">-- Select --</option>
+        <option value="1">Female</option>
+        <option value="2">Male</option>
+      </select>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Height (cm):</label>
+      <input type="number" name="height" required>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Weight (kg):</label>
+      <input type="number" name="weight" step="0.1" required>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Systolic BP (ap_hi):</label>
+      <input type="number" name="ap_hi" required>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Diastolic BP (ap_lo):</label>
+      <input type="number" name="ap_lo" required>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Cholesterol:</label>
+      <select name="cholesterol" required>
+        <option value="">-- Select --</option>
+        <option value="1">Normal</option>
+        <option value="2">Above Normal</option>
+        <option value="3">Well Above Normal</option>
+      </select>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Glucose:</label>
+      <select name="gluc" required>
+        <option value="">-- Select --</option>
+        <option value="1">Normal</option>
+        <option value="2">Above Normal</option>
+        <option value="3">Well Above Normal</option>
+      </select>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Smokes?</label>
+      <select name="smoke" required>
+        <option value="">-- Select --</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Alcohol Intake?</label>
+      <select name="alco" required>
+        <option value="">-- Select --</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>Physically Active?</label>
+      <select name="active" required>
+        <option value="">-- Select --</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="question" style="display: none;">
+      <label>History of CVD (cardio)?</label>
+      <select name="cardio" required>
+        <option value="">-- Select --</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="submitSection" style="display: none; text-align: center;">
+    <br>
+    <button type="submit">🧠 Predict Biological Age</button>
+  </div>
+
+  <div id="navigationButtons">
+  <button type="button" id="prevBtn" onclick="prevQuestion()" style="display: none;">⬅ Previous</button>
+  <button type="button" id="nextBtn" onclick="nextQuestion()">Next ➡</button>
+  </div>
+
+</form>
+
+<script>
+  let currentQuestion = 0;
+  let username = '';
+
+  function startForm() {
+    username = document.getElementById('username').value.trim();
+    if (!username) {
+      alert("Please enter your name first!");
+      return;
+    }
+
+    document.getElementById('greetingSection').innerHTML = `
+      <h2>Hi ${username}! 👋</h2>
+      <p>Welcome to your personal Biological Age Predictor.</p>
+    `;
+    document.getElementById('predictForm').style.display = "block";
+    showQuestion(currentQuestion);
+  }
+
+  function showQuestion(index) {
+    const questions = document.querySelectorAll('.question');
+    questions.forEach((q, i) => {
+      q.style.display = i === index ? 'block' : 'none';
+    });
+
+    document.getElementById('prevBtn').style.display = index > 0 ? 'inline-block' : 'none';
+    document.getElementById('nextBtn').style.display = index < questions.length - 1 ? 'inline-block' : 'none';
+    document.getElementById('submitSection').style.display = index === questions.length - 1 ? 'block' : 'none';
+  }
+
+  function nextQuestion() {
+    const questions = document.querySelectorAll('.question');
+    if (currentQuestion < questions.length - 1) {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    }
+  }
+
+  function prevQuestion() {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion(currentQuestion);
+    }
+  }
+</script>
+
+{% endblock %}

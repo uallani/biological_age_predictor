@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="text-align: center;">
+  <h2>🔍 SHAP Explanation</h2>
+  <p>SHAP (SHapley Additive exPlanations) helps you understand <strong>why</strong> certain features influenced your biological age prediction.</p>
+</div>
+
+<hr style="border-top: 1px solid #ccc;">
+
+<div style="margin-top: 30px;">
+  <h3 style="text-align: center;">🌍 Global Feature Importance</h3>
+  <p style="text-align: center;">These features are most influential across the entire dataset.</p>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{ url_for('static', filename='shap_global_bar.png') }}" alt="Global SHAP Bar Plot" style="max-width: 90%; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+  </div>
+</div>
+
+<div style="margin-top: 50px;">
+  <h3 style="text-align: center;">👤 Your Local Explanation</h3>
+  <p style="text-align: center;">This waterfall plot shows how your personal inputs shifted the prediction.</p>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{ url_for('static', filename='shap_local_waterfall.png') }}" alt="Local SHAP Waterfall Plot" style="max-width: 90%; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+  </div>
+</div>
+
+<p style="margin-top: 40px; text-align: center; color: #eee;">💡 <strong>Tip:</strong> Positive SHAP values increase your biological age, while negative values reduce it.</p>
+{% endblock %}
