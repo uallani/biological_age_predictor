@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_div9P3A6W6UMAIR047"></div>
+        <div class="lime top_div" id="top_divSO5EY5GNM2LWZY4"></div>
         
         <script>
-        var top_div = d3.select('#top_div9P3A6W6UMAIR047').classed('lime top_div', true);
+        var top_div = d3.select('#top_divSO5EY5GNM2LWZY4').classed('lime top_div', true);
         
         
                     var pp_div = top_div.append('div')
                                         .classed('lime predicted_value', true);
                     var pp_svg = pp_div.append('svg').style('width', '100%');
-                    var pp = new lime.PredictedValue(pp_svg, 48.58758555735854, 47.22530989105481, 59.373820213190406);
+                    var pp = new lime.PredictedValue(pp_svg, 48.77021454953584, 46.94330810888563, 58.901733874854);
                     
         var exp_div;
             var exp = new lime.Explanation(["negative", "positive"]);
         
             exp_div = top_div.append('div').classed('lime explanation', true);
-            exp.show([["cardio <= 0.00", -1.9453518346569838], ["ap_hi_scaled <= -0.40", -1.0466752882393233], ["HighChol_Flag <= 0.00", -0.7814825440520878], ["HighGluc_Flag <= 0.00", -0.6179099044096783], ["smoke <= 0.00", 0.5445777717304433], ["1.00 < gender <= 2.00", 0.4402340760443662], ["alco <= 0.00", 0.42690019383574346], ["SBP_DBP_Ratio_scaled <= -0.41", -0.38547533186465444], ["Pulse_Pressure_scaled <= -0.44", -0.28559052190953915], ["BMI_scaled <= -0.60", -0.20228260834370834]], 1, exp_div);
+            exp.show([["cardio <= 0.00", -1.7606188196345787], ["ap_hi <= 120.00", -1.1943703293482262], ["HighChol_Flag <= 0.00", -0.7679040708088093], ["HighGluc_Flag <= 0.00", -0.6290311949226777], ["smoke <= 0.00", 0.5953806190715252], ["alco <= 0.00", 0.5540927128397501], ["SBP_DBP_Ratio <= 1.50", -0.4119274523465803], ["1.00 < gender <= 2.00", 0.3962026752196101], ["Pulse_Pressure <= 40.00", -0.32446217992416215], ["165.00 < height <= 170.00", -0.3119948797834222]], 1, exp_div);
             
         var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["cardio", "0.00", -1.9453518346569838], ["ap_hi_scaled", "-0.99", -1.0466752882393233], ["HighChol_Flag", "0.00", -0.7814825440520878], ["HighGluc_Flag", "0.00", -0.6179099044096783], ["smoke", "0.00", 0.5445777717304433], ["gender", "2.00", 0.4402340760443662], ["alco", "0.00", 0.42690019383574346], ["SBP_DBP_Ratio_scaled", "-1.24", -0.38547533186465444], ["Pulse_Pressure_scaled", "-1.27", -0.28559052190953915], ["BMI_scaled", "-0.92", -0.20228260834370834]], 1, raw_div);
+            exp.show_raw_tabular([["cardio", "0.00", -1.7606188196345787], ["ap_hi", "110.00", -1.1943703293482262], ["HighChol_Flag", "0.00", -0.7679040708088093], ["HighGluc_Flag", "0.00", -0.6290311949226777], ["smoke", "0.00", 0.5953806190715252], ["alco", "0.00", 0.5540927128397501], ["SBP_DBP_Ratio", "1.38", -0.4119274523465803], ["gender", "2.00", 0.3962026752196101], ["Pulse_Pressure", "30.00", -0.32446217992416215], ["height", "168.00", -0.3119948797834222]], 1, raw_div);
         
         </script>
         </body></html>

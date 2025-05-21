@@ -1,27 +1,20 @@
 {% extends "base.html" %}
+
 {% block content %}
 <div style="text-align: center;">
-  <h2>🧠 Hello {{ name }}, here’s your Biological Age</h2>
+  <h2>Here is your Biological Age</h2>
   <p>Your estimated <strong>biological age</strong> is:</p>
 
   <div style="font-size: 64px; font-weight: bold; margin: 20px 0; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">
     {{ predicted_age }} years
   </div>
 
-  <h3 style="color: #eee;">{{ status }}</h3>
-
+  <!-- 💡 Tips Section -->
+  <h3 style="color: #eee;">Health Tips</h3>
   <ul style="list-style-type: none; padding-left: 0; color: #f1f1f1;">
     {% for tip in tips %}
       <li>🔹 {{ tip }}</li>
     {% endfor %}
   </ul>
-
-  <br>
-  <form action="/cluster_insights" method="POST">
-    <input type="hidden" name="user_data" value="{{ user_data | tojson }}">
-    <button type="submit" style="padding: 10px 20px; font-size: 18px; background: #00bcd4; color: white; border: none; border-radius: 10px; cursor: pointer;">
-      🌟 Get Personalized Insights
-    </button>
-  </form>
 </div>
 {% endblock %}
